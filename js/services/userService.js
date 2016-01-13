@@ -4,13 +4,12 @@ angular.module('menuApp').service('userService', function ($firebaseArray, $fire
 	var auth = $firebaseAuth(new Firebase(fb));
 	
 	this.getUser = function() {
-		var signedIn = auth.$getAuth();
-		if (signedIn === null) {
+		var userAuth = localStorage.getItem('user');
+		var userRef = JSON.parse(userAuth);
+		if (userRef === null) {
 			$state.go('homeLogin');
 			return;
 		} else {
-			var userAuth = localStorage.getItem('user');
-			var userRef = JSON.parse(userAuth);
 			var newUserObject = $firebaseObject(new Firebase(fb + 'users/' + userRef));
 			return newUserObject;
 		}	
@@ -231,10 +230,10 @@ angular.module('menuApp').service('userService', function ($firebaseArray, $fire
 		return auth.$unauth();
 	}
 
-	/*auth.$onAuth(function(authData) {
+	auth.$onAuth(function(authData) {
 		if (!authData) {
 			$state.go('homeLogin');
 		}
-	});*/
+	});
 
 });

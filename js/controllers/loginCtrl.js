@@ -2,9 +2,10 @@ angular.module('menuApp').controller('loginCtrl', function ($scope, $firebaseArr
 
 	var userAuth = localStorage.getItem('user');
 	var userRef = JSON.parse(userAuth);
-	if (userRef === null) {
-		$scope.hider = true; //set to true when ready for auth;	
+	if(userRef === undefined) {
+		$scope.hider = true;	
 	}
+	
 
 	var header = $('.background');
 
@@ -23,9 +24,7 @@ angular.module('menuApp').controller('loginCtrl', function ($scope, $firebaseArr
 	function nextBackground() {
 	    current++;
 	    current = current % backgrounds.length;
-
 	    header.css('background-image', backgrounds[current]);
-
 	}
 	setInterval(nextBackground, 10000);
 
@@ -47,6 +46,8 @@ angular.module('menuApp').controller('loginCtrl', function ($scope, $firebaseArr
 			if (userObj === undefined) {
 				$state.go('homeLogin');
 			} else {
+				var userAuth = localStorage.getItem('user');
+				var userRef = JSON.parse(userAuth);
 				$scope.user = userObj;
 				$scope.hider = false;
 			}
@@ -67,12 +68,14 @@ angular.module('menuApp').controller('loginCtrl', function ($scope, $firebaseArr
 			if (userObj === undefined) {
 				$state.go('signup');
 			} else {
-				$scope.user = userObj;
+				var userAuth = localStorage.getItem('user');
+				var userRef = JSON.parse(userAuth);
+				$scope.user = userRef;
 				$scope.hider = false;
 			}
 		});
 	}
 
-	/*$scope.user = userService.getUser();*/
+	$scope.user = userService.getUser();
 
 });

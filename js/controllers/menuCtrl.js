@@ -1,8 +1,7 @@
 angular.module('menuApp').controller('menuCtrl', function ($scope, menuService, $firebaseObject, $firebaseArray, fb) {
 
-	$scope.drag = function(event, index) {
-		event.dataTransfer.setData('text', event.target.id);
-	}
+	var userAuth = localStorage.getItem('user');
+	var userRef = JSON.parse(userAuth);
 	
 	$scope.handleDrop = function(item, bin) {
 		
@@ -15,13 +14,12 @@ angular.module('menuApp').controller('menuCtrl', function ($scope, menuService, 
 		}		
 	}
 
-	$scope.retrieveMenuArray = function() {
-		menuService.getMenuItems().then(function(response) {
+	$scope.retrieveMenuArray = function(userId) {
+		menuService.getMenuItems(userId).then(function(response) {
 			$scope.menuArray = response;
-			
 		})
 	}
 
-	$scope.retrieveMenuArray();
+	$scope.retrieveMenuArray(userRef);
 
 });

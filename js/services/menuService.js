@@ -2,25 +2,23 @@ angular.module('menuApp').service('menuService', function (fb, $firebaseArray, $
 	
 	var self = this;
 	var auth = $firebaseAuth(new Firebase(fb));
-	var userAuth = localStorage.getItem('user');
-	var userRef = JSON.parse(userAuth);
-	if (userRef === null) {
-		$state.go('homeLogin');
-	} else {
-		var authId = auth.$getAuth().auth.uid;
-	}
-	var newMenuArr = $firebaseArray(new Firebase(fb + 'users/' + authId + '/menu'));
+	var authId = auth.$getAuth().auth.uid;
 
+	/*var newMenuArr = $firebaseArray(new Firebase(fb + 'users/' + authId + '/menu'));*/
+	
 	this.getMenuItems = function(userId) {
+		var newMenuArr = $firebaseArray(new Firebase(fb + 'users/' + userId + '/menu'));
 		return newMenuArr.$loaded().then(function(response) {
 			return response
 		})
 	}
 
 	this.removeRecipeFromMenu = function(itemLocation) {
+		var userAuth = localStorage.getItem('user');
+		var userRef = JSON.parse(userAuth);
 		var weekNum = Number(itemLocation[0]) + 1;
 		weekNum = weekNum.toString();
-		var itemLocationRef = $firebaseObject(new Firebase(fb + 'users/' + authId + '/menu/week' + weekNum + '/' + itemLocation[1]));
+		var itemLocationRef = $firebaseObject(new Firebase(fb + 'users/' + userRef + '/menu/week' + weekNum + '/' + itemLocation[1]));
 		itemLocationRef.$loaded().then(function(){
 			itemLocationRef[itemLocation[2]] = '';
 			itemLocationRef.$save();
@@ -28,9 +26,11 @@ angular.module('menuApp').service('menuService', function (fb, $firebaseArray, $
 	}
 
 	this.addRecipeToMenu = function(item, itemLocation) {
+		var userAuth = localStorage.getItem('user');
+		var userRef = JSON.parse(userAuth);
 		var weekNum = Number(itemLocation[0]) + 1;
 		weekNum = weekNum.toString();
-		var itemLocationRef = $firebaseObject(new Firebase(fb + 'users/' + authId + '/menu/week' + weekNum + '/' + itemLocation[1]));
+		var itemLocationRef = $firebaseObject(new Firebase(fb + 'users/' + userRef + '/menu/week' + weekNum + '/' + itemLocation[1]));
 		itemLocationRef.$loaded().then(function(){
 			itemLocationRef[itemLocation[2]] = item;
 			itemLocationRef.$save();

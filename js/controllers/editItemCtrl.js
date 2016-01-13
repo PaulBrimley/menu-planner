@@ -1,8 +1,5 @@
 angular.module('menuApp').controller('editItemCtrl', function ($scope, $firebaseArray, userService, $rootScope, fb, itemService, $stateParams) {
 
-	$scope.userRef = new Firebase(fb);
-	$scope.authData = $scope.userRef.getAuth();
-
 	$scope.message = '';
 
 	$scope.addItem = function(name, qty, authData) {
@@ -18,7 +15,6 @@ angular.module('menuApp').controller('editItemCtrl', function ($scope, $firebase
 	}	
 
 	$scope.loadItem = function(recipeItem, index) {
-
 		$scope.currentItemIndex = index;
 		$scope.oldItemName = recipeItem.item;
 		$scope.oldItemQty = recipeItem.qty;

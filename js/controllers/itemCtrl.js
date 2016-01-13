@@ -66,10 +66,15 @@ angular.module('menuApp').controller('itemCtrl', function ($scope, $firebaseArra
 		}
 		itemService.submitRecipe(newRecipeObj, $scope.authData.uid);
 		$scope.newRecipe.instructions = '';
+		for (var i = $scope.newRecipe.components.length - 1; i >= 0; i--) {
+			$scope.newRecipe.components.splice(i, 1);
+		}
+
 		document.forms[0].elements[0].focus();
 		$("#myMessage").text('Recipe successfully added');
 		setTimeout(function() {
 			$("#myMessage").text('');
+			
 		}, 5000);
 	}
 

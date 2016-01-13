@@ -1,0 +1,22 @@
+<span ng-click="opener()">{{recipe.name}}</span>
+
+<div ng-show="overlaySwitcher" id="recipeHolder">
+	<div id="insideRecipeHolder">
+		<div id="closer" ng-click="closer()"><img src="images/iconClose2x.png"/></div>
+		<div class="large-font-size">{{recipe.name}}</div>
+		<div id="innerHolder">
+			<div id="leftInner">
+				<div>Ingredients:</div>
+				<ul>
+					<li ng-repeat="ingredient in recipe.components">{{ingredient.item}} {{ingredient.qty}}</li>
+				</ul>
+			</div>
+			<div id="rightInner">
+				<div>Instructions:</div>
+				<div id="reallyInner" ng-repeat="step in instructions">{{step}}</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<div ng-show="overlaySwitcher" id="cover"></div>

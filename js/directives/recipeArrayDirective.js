@@ -9,8 +9,11 @@ angular.module('menuApp').directive('recipeArrayDirective', function() {
 		},
 	
 		controller: function($scope, itemService, $state) {
-			$scope.retrieveRecipeArray = function() {
-				itemService.getMenuItems().then(function(response) {
+			var userAuth = localStorage.getItem('user');
+			var userRef = JSON.parse(userAuth);
+
+			$scope.retrieveRecipeArray = function(userId) {
+				itemService.getMenuItems(userId).then(function(response) {
 					$scope.recipeArray = response;
 				});
 			}
@@ -23,26 +26,13 @@ angular.module('menuApp').directive('recipeArrayDirective', function() {
 				} else {
 					return;
 				}
-				
 			}
 
 			$scope.loadRecipe = function(recipe) {
 				$state.go('editItem',{recipeId: recipe.$id});
 			}
 
-			var drag = function(event, index) {
-				event.dataTransfer.setData('text', event.target.id);
-			}
-
-			var drop = function() {
-				console.log('hello');
-			}
-
-			$scope.allowDrop = function() {
-				console.log('there');
-			}
-
-			$scope.retrieveRecipeArray();
+			$scope.retrieveRecipeArray(userRef);
 			
 		}	
 	}

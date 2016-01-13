@@ -5,23 +5,24 @@ angular.module('menuApp').service('itemService', function ($firebaseArray, $fire
 	var userAuth = localStorage.getItem('user');
 	var userRef = JSON.parse(userAuth);
 
-	if (userRef === null) {
+	/*if (userRef === null) {
 		$state.go('homeLogin');
 	} else {
 		var authId = auth.$getAuth().auth.uid;
-	}
+	}*/
 	
-	var newRecipeArr = $firebaseArray(new Firebase(fb + 'users/' + authId + '/recipes'));
+	var newRecipeArr = $firebaseArray(new Firebase(fb + 'users/' + userRef + '/recipes'));
 
 	
-	this.getMenuItems = function() {
+	this.getMenuItems = function(userId) {
+		var newRecipeArr = $firebaseArray(new Firebase(fb + 'users/' + userId + '/recipes'));
 		return newRecipeArr.$loaded().then(function(response) {
 			return response;
 		});
 	}
 
 	this.getSingleRecipe = function(recipeId) {
-		var singleRecipe = $firebaseObject(new Firebase(fb + 'users/' + authId + '/recipes/' + recipeId));
+		var singleRecipe = $firebaseObject(new Firebase(fb + 'users/' + userRef + '/recipes/' + recipeId));
 		return singleRecipe.$loaded().then(function(response) {
 			/*console.log(response.name);*/
 			return response;
@@ -42,7 +43,7 @@ angular.module('menuApp').service('itemService', function ($firebaseArray, $fire
 	}
 
 	this.editRecipe = function(recipe) {
-		var newRecipeObj = $firebaseObject(new Firebase(fb + 'users/' + authId + '/recipes/' + recipe.$id));
+		var newRecipeObj = $firebaseObject(new Firebase(fb + 'users/' + userRef + '/recipes/' + recipe.$id));
 		newRecipeObj.name = recipe.name;
 		newRecipeObj.instructions = recipe.instructions;
 		newRecipeObj.components = recipe.components;
@@ -52,7 +53,7 @@ angular.module('menuApp').service('itemService', function ($firebaseArray, $fire
 	}
 
 	this.loadRecipe = function(id) {
-		var newRecipeObj = $firebaseObject(new Firebase(fb + 'users/' + authId + '/recipes/' + id));
+		var newRecipeObj = $firebaseObject(new Firebase(fb + 'users/' + userRef + '/recipes/' + id));
 		return newRecipeObj;
 	}
 });
