@@ -17,7 +17,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			url: '/menu',
 			controller: 'menuCtrl',
 			templateUrl: '/js/html/menu.html', 
-			/*resolve: {
+			resolve: {
 				userCheck: function() {
 					var userAuth = sessionStorage.getItem('user');
 					var userRef = JSON.parse(userAuth);
@@ -25,13 +25,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 						$state.go('homeLogin');	
 					}
 				}
-			}*/
+			}
 		})
 		.state('addItem', {
 			url: '/addItemPage',
 			controller: 'itemCtrl',
 			templateUrl: '/js/html/addItem.html',
-			/*resolve: {
+			resolve: {
 				userCheck: function() {
 					var userAuth = sessionStorage.getItem('user');
 					var userRef = JSON.parse(userAuth);
@@ -39,13 +39,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 						$state.go('homeLogin');	
 					}
 				}
-			}*/
+			}
 		})
 		.state('editItem', {
 			url: '/editItemPage/:recipeId',
 			controller: 'editItemCtrl',
 			templateUrl: '/js/html/editItem.html',
-			/*resolve: {
+			resolve: {
 				userCheck: function() {
 					var userAuth = sessionStorage.getItem('user');
 					var userRef = JSON.parse(userAuth);
@@ -53,13 +53,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 						$state.go('homeLogin');	
 					}
 				}
-			}*/
+			}
 		})
 		.state('recipePage', {
 			url: '/recipe',
 			controller: 'recipeCtrl',
 			templateUrl: '/js/html/recipe.html',
-			/*resolve: {
+			resolve: {
 				userCheck: function() {
 					var userAuth = sessionStorage.getItem('user');
 					var userRef = JSON.parse(userAuth);
@@ -67,13 +67,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 						$state.go('homeLogin');	
 					}
 				}
-			}*/
+			}
 		})
 		.state('shoppingListPage', {
 			url: '/shoppingList',
 			controller: 'soppingCtrl',
 			templateUrl: '/js/html/shopping.html',
-			/*resolve: {
+			resolve: {
 				userCheck: function() {
 					var userAuth = sessionStorage.getItem('user');
 					var userRef = JSON.parse(userAuth);
@@ -81,7 +81,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 						$state.go('homeLogin');	
 					}
 				}
-			}*/
+			}
 		});
 
 	$urlRouterProvider.otherwise('homeLogin');
