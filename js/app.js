@@ -19,7 +19,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			templateUrl: '/js/html/menu.html', 
 			resolve: {
 				userCheck: function() {
-					var userAuth = sessionStorage.getItem('user');
+					var userAuth = localStorage.getItem('user');
 					var userRef = JSON.parse(userAuth);
 					if (userRef === null) {
 						$state.go('homeLogin');	
@@ -33,7 +33,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			templateUrl: '/js/html/addItem.html',
 			resolve: {
 				userCheck: function() {
-					var userAuth = sessionStorage.getItem('user');
+					var userAuth = localStorage.getItem('user');
 					var userRef = JSON.parse(userAuth);
 					if (userRef === null) {
 						$state.go('homeLogin');	
@@ -47,7 +47,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			templateUrl: '/js/html/editItem.html',
 			resolve: {
 				userCheck: function() {
-					var userAuth = sessionStorage.getItem('user');
+					var userAuth = localStorage.getItem('user');
 					var userRef = JSON.parse(userAuth);
 					if (userRef === null) {
 						$state.go('homeLogin');	
@@ -61,7 +61,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			templateUrl: '/js/html/recipe.html',
 			resolve: {
 				userCheck: function() {
-					var userAuth = sessionStorage.getItem('user');
+					var userAuth = localStorage.getItem('user');
 					var userRef = JSON.parse(userAuth);
 					if (userRef === null) {
 						$state.go('homeLogin');	
@@ -75,14 +75,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			templateUrl: '/js/html/shopping.html',
 			resolve: {
 				userCheck: function() {
-					var userAuth = sessionStorage.getItem('user');
+					var userAuth = localStorage.getItem('user');
 					var userRef = JSON.parse(userAuth);
 					if (userRef === null) {
 						$state.go('homeLogin');	
 					}
 				}
 			}
-			
+
 		});
 
 	$urlRouterProvider.otherwise('homeLogin');
