@@ -85,7 +85,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
 		});
 
-	/*$urlRouterProvider.otherwise('homeLogin');*/
+	$urlRouterProvider.otherwise('homeLogin');
 
 
 });
