@@ -232,10 +232,10 @@ angular.module('menuApp').service('userService', function ($firebaseArray, $fire
 		return auth.$unauth();
 	}
 
-	auth.$onAuth(function(authData) {
+	/*auth.$onAuth(function(authData) {
 		if (!authData) {
 			$state.go('homeLogin');
 		}
-	});
+	});*/
 
 });
