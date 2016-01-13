@@ -226,7 +226,6 @@ angular.module('menuApp').service('userService', function ($firebaseArray, $fire
 	}
 
 	this.logout = function() {
-
 		localStorage.removeItem('user');
 		$state.go('homeLogin');
 		return auth.$unauth();

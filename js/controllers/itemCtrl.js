@@ -2,7 +2,6 @@ angular.module('menuApp').controller('itemCtrl', function ($scope, $firebaseArra
 
 	$scope.userRef = new Firebase(fb);
 	$scope.authData = $scope.userRef.getAuth();
-	$scope.user = $scope.$parent.user;
 
 	$scope.newRecipe = {};
 	$scope.newRecipe.components = [];

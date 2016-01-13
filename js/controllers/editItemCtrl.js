@@ -2,7 +2,6 @@ angular.module('menuApp').controller('editItemCtrl', function ($scope, $firebase
 
 	$scope.userRef = new Firebase(fb);
 	$scope.authData = $scope.userRef.getAuth();
-	$scope.user = $scope.$parent.user;
 
 	$scope.message = '';
 
