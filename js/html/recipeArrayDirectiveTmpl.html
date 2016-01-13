@@ -1,0 +1,6 @@
+
+<div class="recipeDirective" id ="{{recipe.$id}}" ng-repeat="recipe in recipeArray track by $index" draggable>
+	<div>{{recipe.name}}</div>
+	<button ng-click="removeRecipe(recipe)">Remove Recipe</button>
+	<button ng-click="loadRecipe(recipe)">Edit Recipe</button>
+</div>

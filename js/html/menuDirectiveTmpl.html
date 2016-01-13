@@ -1,0 +1,21 @@
+
+<div class="top">
+		<div class="center-align large-font-size">Menu</div>		
+</div>
+<div class="center center-align">
+	<div id="trash" droppable drop="handleDrop"><img src="/images/trash.png"/></div>
+	<div class="other">Drag recipe from the list to where you want them in the menu. B-Breakfast, L-Lunch, S-Snack, D-Dinner<br/>Single click on the recipe in the menu to see the recipe details. Drag the recipe the trash to remove it from the menu.</div>
+</div>
+<div class="weekContainer">
+
+	<table>
+		<tr ng-repeat="week in menuArray">
+			<td ng-repeat="day in week" nowrap>
+				<div id="{{$parent.$index}},{{$index}},breakfast" droppable drop="handleDrop" draggable>B: <recipe id="{{day.breakfast}}"></recipe></div>
+				<div id="{{$parent.$index}},{{$index}},lunch" droppable drop="handleDrop" draggable>L: <recipe id="{{day.lunch}}"></recipe></div>
+				<div id="{{$parent.$index}},{{$index}},snack" droppable drop="handleDrop" draggable>S: <recipe id="{{day.snack}}"></recipe></div>
+				<div id="{{$parent.$index}},{{$index}},dinner" droppable drop="handleDrop" draggable>D: <recipe id="{{day.dinner}}"></recipe></div>				
+			</td>
+		</tr>
+	</table>
+</div>

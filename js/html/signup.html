@@ -1,0 +1,30 @@
+<div class="login-container">
+	<div class="sign-ins">
+		<h1>Sign Up:</h1>
+		<a ui-sref="homeLogin">Back to log in page</a><br/>
+		<form ng-submit="register(newUser)" name="newUserForm">
+			<table>
+				<tr>
+					<td class="text-right">First Name:</td>
+					<td><input type="text" ng-model="newUser.firstName" placeholder="Input First Name..." required></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">Last Name:</td>
+					<td><input type="text" ng-model="newUser.lastName" placeholder="Input Last Name..." required></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">Email:</td>
+					<td><input type="email" ng-model="newUser.email" placeholder="Input Email..." required></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">Password:</td>
+					<td><input type="password" ng-model="newUser.password" placeholder="Input Password..." required></td>
+					<td><button ng-disabled="newUserForm.$invalid">Sign Up</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,75 @@
+<div class="left-container">
+	<div><strong>Type to rename recipe:</strong></div>
+	<div class="top-left">
+		<div class="inside-top-left">
+			<div>Name Recipe:</div>
+		</div>
+		<div class="inside-top-left">
+			<form ng-submit="createNewRecipe(newRecipeName)" name="nameRecipe">
+				<div><input ng-model="recipe.name" placeholder="Input Recipe Name..." required></div>
+			</form>
+		</div>
+	</div>
+	<div><strong>Add Items:</strong></div>
+	<div class="top-left">
+		<div class="inside-top-left">
+			<div>Item Name:</div>
+			<div>Quantity:</div>
+			<div>Add Item:</div>
+		</div>
+		<div class="inside-top-left">
+			<form ng-submit="addItem(newItemName, newItemQty)" name="newRecipeItem">
+				<div><input ng-model="newItemName" placeholder="Input Item Name..." required></div>
+				<div><input ng-model="newItemQty" placeholder="Input Item Quantity..." required></div>
+				<div><button ng-disabled="newRecipeItem.$invalid" type="submit">Add Item</button></div>
+			</form>
+		</div>
+	</div>
+	<div><strong>Edit Items:</strong></div>
+	<div>(click on item to edit)</div>
+	<div class="top-left">
+		<div class="inside-top-left">
+			<div>Item Name:</div>
+			<div>Quantity:</div>
+			<div>Edit Item:</div>
+		</div>
+		<div class="inside-top-left">
+			<form ng-submit="editItem(oldItemName, oldItemQty, currentItemIndex)" name="editRecipeItem">
+				<div><input ng-model="oldItemName" required></div>
+				<div><input ng-model="oldItemQty" required></div>
+				<div><button ng-disabled="editRecipeItem.$invalid" type="submit">Edit Item</button></div>
+			</form>
+		</div>
+	</div>
+	<div>
+		<div><strong>Message:</strong></div>
+		<div id="myMessage">&nbsp{{message}}</div>
+	</div>
+</div>
+
+<div class="right-container">
+	<div class="top">
+		<div class="center-align large-font-size">{{recipe.name}}</div>
+	</div>
+	<div class="bottom">
+		<div class="items standard-padding">
+			<div class="medium-font-size"><strong>Ingredients:</strong></div><br/>
+			<table>
+				<tr>
+					<td class="center-align">Remove<br/>Item:</td>
+				</tr>
+				<tr ng-repeat="recipeItem in recipe.components track by $index">
+					<td class="center-align"><input type="checkbox" ng-click="removeItem(recipeItem)"></input></td>
+					<td ng-click="loadItem(recipeItem, $index)" style="cursor: pointer">{{recipeItem.qty}}</td>
+					<td ng-click="loadItem(recipeItem, $index)" style="cursor: pointer">{{recipeItem.item}}</td>
+				</tr>
+			</table>			
+		</div>
+
+		<div class="instructions standard-padding">
+			<div class="medium-font-size"><strong>Recipe Instruction:</strong></div><br/>
+			<textarea ng-model="recipe.instructions" placeholder="Enter Recipe Instructions..."></textarea>
+			<div>Update Recipe (must update for changes to take effect):</div><button ng-click="updateRecipe(recipe)">Update</button>
+		</div>
+	</div>
+</div>

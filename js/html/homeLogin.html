@@ -1,0 +1,20 @@
+<div class="login-container">
+	<div class="sign-ins">	
+		<h1>Sign In:</h1>
+		<a ui-sref="signup">Sign up</a><br/>
+		<form ng-submit="login(user)" name="signInForm">
+			<table>
+				<tr>
+					<td class="text-right">Email:</td>
+					<td><input class="signIns" type="email" ng-model="user.email" placeholder="Input Email..." required></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">Password:</td>
+					<td><input class="signIns" type="password" ng-model="user.password" placeholder="Input Password..." required></td>
+					<td><button ng-disabled="signInForm.$invalid">Login</button></td>
+				</tr>
+			</table>			
+		</form>
+	</div>
+</div>
