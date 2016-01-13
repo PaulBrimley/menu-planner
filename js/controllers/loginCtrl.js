@@ -73,6 +73,6 @@ angular.module('menuApp').controller('loginCtrl', function ($scope, $firebaseArr
 		});
 	}
 
-	$scope.user = userService.getUser();
+	/*$scope.user = userService.getUser();*/
 
 });
