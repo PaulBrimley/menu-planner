@@ -7,7 +7,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	$stateProvider
 		.state('homeLogin', {
 			url: '/homeLogin',
-			templateUrl: '/js/html/homeLogin.html'
+			templateUrl: '/js/html/login.html'
 		})
 		.state('signup', {
 			url: '/signup',
